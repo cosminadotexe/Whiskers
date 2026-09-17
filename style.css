@@ -1,0 +1,188 @@
+  :root{
+    --bg: #241a15;
+    --panel: #2f231b;
+    --grid-line: #140d09;
+    --cell: #4a372a;
+    --cell-hi: #5c4433;
+    --cell-dug: #1a120c;
+    --ginger: #e8935a;
+    --ginger-dim: #a35f34;
+    --pink: #f2a4b0;
+    --text: #f5e9da;
+    --text-dim: #b8a48f;
+    --mono: 'Courier New', ui-monospace, monospace;
+  }
+  * { box-sizing: border-box; }
+  html, body {
+    margin: 0; padding: 0;
+    background: var(--bg);
+    color: var(--text);
+    font-family: var(--mono);
+    min-height: 100vh;
+  }
+  body {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: 24px;
+  }
+  .rig {
+    width: min(560px, 100%);
+  }
+  .rig-head {
+    display: flex;
+    align-items: baseline;
+    justify-content: space-between;
+    margin-bottom: 14px;
+    padding: 0 2px;
+  }
+  .rig-head h1 {
+    font-size: 20px;
+    letter-spacing: 0.02em;
+    margin: 0;
+    font-weight: 700;
+    color: var(--ginger);
+  }
+  .rig-head h1 span {
+    color: var(--text-dim);
+    font-weight: 400;
+    font-size: 13px;
+    margin-left: 8px;
+  }
+  .panel {
+    background: var(--panel);
+    border: 1px solid #4a3826;
+    border-radius: 4px;
+    padding: 14px;
+    box-shadow: 0 8px 24px rgba(0,0,0,0.4), inset 0 1px 0 rgba(255,255,255,0.03);
+  }
+  .dash {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    background: var(--cell-dug);
+    border: 1px solid var(--grid-line);
+    border-radius: 3px;
+    padding: 10px 14px;
+    margin-bottom: 12px;
+  }
+  .counter {
+    font-size: 26px;
+    font-weight: 700;
+    color: var(--ginger);
+    letter-spacing: 0.04em;
+    min-width: 3ch;
+    text-align: center;
+    font-variant-numeric: tabular-nums;
+  }
+  .face-btn {
+    width: 40px; height: 40px;
+    border-radius: 3px;
+    border: 1px solid var(--ginger-dim);
+    background: var(--cell);
+    color: var(--text);
+    font-size: 20px;
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    transition: transform 0.08s ease, background 0.15s ease;
+  }
+  .face-btn:hover { background: var(--cell-hi); }
+  .face-btn:active { transform: scale(0.92); }
+  #timer { color: var(--pink); }
+
+  .board {
+    display: grid;
+    gap: 2px;
+    background: var(--grid-line);
+    border: 1px solid var(--grid-line);
+    border-radius: 3px;
+    overflow: hidden;
+    touch-action: manipulation;
+  }
+  .cell {
+    aspect-ratio: 1 / 1;
+    background: var(--cell);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 15px;
+    font-weight: 700;
+    cursor: pointer;
+    user-select: none;
+    -webkit-user-select: none;
+    position: relative;
+    transition: background 0.06s ease;
+  }
+  .cell:hover:not(.dug):not(.flagged) { background: var(--cell-hi); }
+  .cell.dug {
+    background: var(--cell-dug);
+    cursor: default;
+  }
+  .cell.dug.chordable {
+    cursor: pointer;
+  }
+  .cell.dug.chordable:hover {
+    background: #241a10;
+  }
+  .cell.flagged::after {
+    content: "🐾";
+    font-size: 13px;
+    filter: sepia(0.4) saturate(2) hue-rotate(-10deg);
+  }
+  .cell.mine { background: var(--pink); }
+  .cell.mine-hit { background: #e57a8d; }
+  .cell.mine::after { content: "🐭"; font-size: 13px; }
+  .cell.wrong-flag { background: var(--cell-dug); }
+  .cell.wrong-flag::after { content: "🐾"; font-size: 13px; opacity: 0.4; filter: grayscale(1); }
+
+  .n1 { color: #8fb3d9; }
+  .n2 { color: #93c07a; }
+  .n3 { color: #e08a6f; }
+  .n4 { color: #b294d9; }
+  .n5 { color: #e8935a; }
+  .n6 { color: #7fd0bd; }
+  .n7 { color: #f5e9da; }
+  .n8 { color: #b8a48f; }
+
+  .rig-foot {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    margin-top: 12px;
+    padding: 0 2px;
+  }
+  .diffs {
+    display: flex;
+    gap: 6px;
+  }
+  .diff-btn {
+    background: transparent;
+    border: 1px solid #4a3826;
+    color: var(--text-dim);
+    font-family: var(--mono);
+    font-size: 12px;
+    padding: 6px 10px;
+    border-radius: 3px;
+    cursor: pointer;
+    letter-spacing: 0.03em;
+  }
+  .diff-btn:hover { border-color: var(--ginger-dim); color: var(--text); }
+  .diff-btn.active {
+    border-color: var(--ginger);
+    color: var(--ginger);
+    background: rgba(232,147,90,0.1);
+  }
+  .status {
+    font-size: 12px;
+    color: var(--text-dim);
+    min-height: 16px;
+  }
+  .status.win { color: var(--ginger); }
+  .status.lose { color: var(--pink); }
+
+  @media (max-width: 420px) {
+    .cell { font-size: 12px; }
+    .counter { font-size: 20px; }
+  }

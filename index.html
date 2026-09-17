@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Whiskers — Mouse Hunt</title>
+<link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+<div class="rig">
+  <div class="rig-head">
+    <h1>WHISKERS <span>// mouse hunt</span></h1>
+  </div>
+
+  <div class="panel">
+    <div class="dash">
+      <div class="counter" id="mineCount">010</div>
+      <button class="face-btn" id="resetBtn" title="New game">😺</button>
+      <div class="counter" id="timer">000</div>
+    </div>
+
+    <div class="board" id="board"></div>
+
+    <div class="rig-foot">
+      <div class="diffs">
+        <button class="diff-btn active" data-diff="easy">GARDEN</button>
+        <button class="diff-btn" data-diff="medium">BACKYARD</button>
+        <button class="diff-btn" data-diff="hard">ATTIC</button>
+      </div>
+      <div class="status" id="status"></div>
+    </div>
+  </div>
+</div>
+<script src="script.js"></script>
+</body>
+</html>
