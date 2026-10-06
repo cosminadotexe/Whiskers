@@ -5,6 +5,13 @@
     hard:   { rows: 16, cols: 16, mines: 50 },
   };
 
+  // each difficulty doubles as a place the cat is hunting, with its own look
+  const THEMES = {
+    easy:   'garden',
+    medium: 'backyard',
+    hard:   'attic',
+  };
+
   const boardEl = document.getElementById('board');
   const mineCountEl = document.getElementById('mineCount');
   const timerEl = document.getElementById('timer');
@@ -26,6 +33,7 @@
   function setDifficulty(name){
     cfg = DIFFS[name];
     diffBtns.forEach(b => b.classList.toggle('active', b.dataset.diff === name));
+    document.body.dataset.theme = THEMES[name];
     newGame();
   }
 
@@ -276,5 +284,6 @@
     btn.addEventListener('click', () => setDifficulty(btn.dataset.diff));
   });
 
+  document.body.dataset.theme = THEMES.easy;
   newGame();
 })();
