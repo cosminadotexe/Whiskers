@@ -12,6 +12,52 @@
     --text-dim: #b8a48f;
     --mono: 'Courier New', ui-monospace, monospace;
   }
+
+  /* ATTIC (hard) — the default dusty orange attic at dusk */
+  body[data-theme="attic"]{
+    --bg: #241a15;
+    --panel: #2f231b;
+    --grid-line: #140d09;
+    --cell: #4a372a;
+    --cell-hi: #5c4433;
+    --cell-dug: #1a120c;
+    --ginger: #e8935a;
+    --ginger-dim: #a35f34;
+    --pink: #f2a4b0;
+    --text: #f5e9da;
+    --text-dim: #b8a48f;
+  }
+
+  /* BACKYARD (medium) — cool grassy green at dusk */
+  body[data-theme="backyard"]{
+    --bg: #151f16;
+    --panel: #1e2a1c;
+    --grid-line: #0b110a;
+    --cell: #33402e;
+    --cell-hi: #3f4f38;
+    --cell-dug: #0d140d;
+    --ginger: #8fc96b;
+    --ginger-dim: #5a8a43;
+    --pink: #e8835f;
+    --text: #eaf0df;
+    --text-dim: #a7b89c;
+  }
+
+  /* GARDEN (easy) — soft blue-dusk with flowering pink accents */
+  body[data-theme="garden"]{
+    --bg: #1b1f2c;
+    --panel: #242b3c;
+    --grid-line: #10131c;
+    --cell: #36405c;
+    --cell-hi: #424e6e;
+    --cell-dug: #11141c;
+    --ginger: #e889a8;
+    --ginger-dim: #a35a78;
+    --pink: #e8c17a;
+    --text: #eef0fa;
+    --text-dim: #a9aecd;
+  }
+
   * { box-sizing: border-box; }
   html, body {
     margin: 0; padding: 0;
@@ -19,6 +65,7 @@
     color: var(--text);
     font-family: var(--mono);
     min-height: 100vh;
+    transition: background-color 0.4s ease, color 0.4s ease;
   }
   body {
     display: flex;
@@ -55,6 +102,7 @@
     border-radius: 4px;
     padding: 14px;
     box-shadow: 0 8px 24px rgba(0,0,0,0.4), inset 0 1px 0 rgba(255,255,255,0.03);
+    transition: background-color 0.4s ease, border-color 0.4s ease;
   }
   .dash {
     display: flex;
@@ -65,6 +113,7 @@
     border-radius: 3px;
     padding: 10px 14px;
     margin-bottom: 12px;
+    transition: background-color 0.4s ease, border-color 0.4s ease;
   }
   .counter {
     font-size: 26px;
